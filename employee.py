@@ -27,18 +27,21 @@ class Employee:
         return self.pay
 
     def __str__(self):
-        if self.name == "Billie":
-            return "Billie works on a monthly salary of 4000. Their total pay is 4000."
-        elif self.name == "Charlie":
-            return "Charlie works on a contract of 100 hours at 25/hour.  Their total pay is 2500."
-        elif self.name == "Renee":
-            return "Renee works on a monthly salary of 3000 and receives a commission for 4 contract(s) at 200/contract.  Their total pay is 3800."
-        elif self.name == "Jan":
-            return "Jan works on a contract of 150 hours at 25/hour and receives a commission for 3 contract(s) at 220/contract.  Their total pay is 4410."
-        elif self.name == "Robbie":
-            return "Robbie works on a monthly salary of 2000 and receives a bonus commission of 1500.  Their total pay is 3500."
-        elif self.name == "Ariel":
-            return "Ariel works on a contract of 120 hours at 30/hour and receives a bonus commission of 600.  Their total pay is 4200."
+        return_str = f'{self.name} works on a '
+        if self.monthly != None:
+            return_str += f'monthly salary of {self.monthly}'
+        else:
+            return_str += f'contract of {self.contract[1]} hours at {self.contract[0]}/hour'
+
+        if self.commission != None:
+            return_str += f' and receives a commission for {self.commission[0]} contract(s) at {self.commission[1]}/contract'
+
+        if self.bonus_commission != None:
+            return_str += f' and receives a bonus commission of {self.bonus_commission}'
+
+        return_str += f'. Their total pay is {self.pay}.'
+        return return_str
+        
 
 
 # Billie works on a monthly salary of 4000.  Their total pay is 4000.
